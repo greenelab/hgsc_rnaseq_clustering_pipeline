@@ -1,79 +1,29 @@
-# High-Grade Serous Ovarian Cancer Subtypes - Why has the field settled on four?
+# Molecular subtypes of high grade serous ovarian cancer across racial groups and gene expression platforms
 
-[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.32906.svg)](http://dx.doi.org/10.5281/zenodo.32906)
+## Overview
+This repository and the analysis repository (LINK) contains all the code needed to recreate the analyses, tables, and figures in the paper "Molecular subtypes of high grade serous ovarian cancer across racial groups and gene expression platforms"
+Black individuals with ovarian cancer experience poorer survival compared to non-Hispanic White individuals.
+High-grade serous carcinoma (HGSC) is the most common ovarian cancer histotype, with gene expression subtypes that are associated with differential survival.
+We characterized HGSC gene expression in Black individuals and considered whether gene expression differences by race may contribute to disparities in survival. 
 
-## Summary
+We performed gene expression clustering using RNA-Seq data from Black and White individuals with HGSC, as well as array-based genotyping data from four existing studies of HGSC.
+Our main analysis assigned subtypes by identifying dataset-specific clusters using K-means clustering for K=2-4.
+The cluster- and dataset-specific gene expression patterns were summarized by moderated t-scores that differentiate an individual cluster from all other clusters within each dataset.
+We compared the calculated gene expression patterns for each cluster across datasets by calculating the Pearson correlation between the two summarized vectors of moderated t-scores.
+Following K=4 subtype assignment and mapping to The Cancer Genome Atlas (TCGA)-derived HGSC subtypes, we used multivariable-adjusted Cox proportional hazards models to estimate subtype-specific survival separately for each dataset. 
 
-In this repository, we compare high-grade serous ovarian cancer (HGSC) subtypes
-across Australian, American, and Japanese populations. We determine that two or
-three subtypes are most consistent across different datasets. A full report of
-this analysis is published in _G3: Genes, Genomes, Genetics_
-([Way et al. 2016](https://doi.org/10.1534/g3.116.033514)).
-Instructions are provided in
-[release version 1.3](https://github.com/greenelab/hgsc_subtypes/tree/1.3)
-to reproduce the analysis.
+This repository contains all of the code used to quantify and QC the RNA-Seq samples before clustering, all downstream analyses after clustering, and all code to generate the figures and tables in the manuscript.
+All clustering analyses can be re-run using Docker container found here: LINK TO DOCKER.
 
-We leverage data extracted from the bioconductor package `curatedOvarianData`
-([Ganzfried et al. 2013](http://doi.org/10.1093/database/bat013)) as well as a
- dataset we uploaded to GEO 
-([GSE74357](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE74357)). We
-apply a unified, unsupervised bioinformatics pipeline to compare subtypes across
-these populations and determine that specific subtypes are reliably identified.
-The most replicable subtypes are mesenchymal-like and proliferative-like and
-their sample representation was highly concordant with other independent
-clustering studies performed on single populations.
 
-We are currently working on adding African American HGSC samples to this
-pipeline to determine the representation of HGSC subtypes in an additional
-population. This project is in development and will be associated with a
-future release.
+## Data Availability
+The data used in this analysis, raw and processed, will be made available upon publication.
 
-## Contact
+## Code overview
+- `1.DataInclusion`: This folder contains the code to download external data, exclude samples that are too similar using dopplegangeR, normalize the Mayo dataset, and select genes to be used as features during clustering.
+- `2.Clustering_DiffExprs`: This folder contains the code to run the sample clustering for each data set, as well as the SAM analysis.
+- `3.Fit`: This contains code for testing the fit of the clusters. We keep this folder for comparison, but the QC metrics generated in this folder are not used in the manuscript. For the clustering metrics used in the paper, refer to the other git repo, specifically `figure_notebooks/rerun_clustering.Rmd` and `figure_notebooks/K3_kmeans_vs_nmf.Rmd.
 
-For all analysis or coding related questions please file a
-[GitHub issue](https://github.com/greenelab/hgsc_subtypes/issues)
+## Installation
 
-## Environment
-
-To ensure analysis reproducibility, _most_ packages are versioned using conda.
-The only exceptions are [MCPcounter](https://github.com/ebecht/MCPcounter)
-and [ESTIMATE](https://r-forge.r-project.org/projects/estimate/), which are
-downloaded by running `install_custom.R`.
-
-To create a complete instance of this environment run the following:
-
-```sh
-conda env create --force --file environment.yml
-source activate hgsc_subtypes
-
-R --no-save < install_custom.R
-```
-
-## Analyses
-
-There are currently two pipelines in place to analyze hgsc subtypes. To
-reproduce the results of either pipeline, activate the `hgsc_subtypes`
-environment and run:
-
-```sh
-# African American HGSC subtypes analysis
-bash aaces_rnaseq_pipeline.sh
-```
-
-## Data
-
-All data was retrieved from curatedOvarianData except for the
-[Mayo data](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE74357)
-and AACES data.
-
-## Acknowledgements
-
-This work was supported by the Institute for Quantitative Biomedical Sciences
-(Dartmouth); The graduate program in Genomics and Computational Biology (Penn);
-The Norris Cotton Cancer Center Developmental Funds;
-the National Cancer Institute at the National Institutes of Health (R01 CA168758
-to J.A.D., F31 CA186625 to J.R., R01 CA122443 to E.L.G.); The Mayo Clinic
-Ovarian Cancer SPORE (P50 CA136393 to E.L.G.); The Mayo Clinic Comprehensive
-Cancer Center-Gene Analysis Shared Resource (P30 CA15083); The Gordon and Betty
-Moore Foundation’s Data-Driven Discovery Initiative (grant number GBMF 4552 to
-C.S.G.); and The American Cancer Society (grant number IRG 8200327 to C.S.G.).
+Type `./run_docker.sh` This may take a while, building all of the r packages can take 30 minutes to an 2 hours. This will run the pipeline directly. If you would like to run the pipeline interactively, an conda environment will be created for you called `hgsc_subtypes` which will need to be activated before running any step of the pipeline.
