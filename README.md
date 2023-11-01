@@ -1,7 +1,7 @@
 # Molecular subtypes of high grade serous ovarian cancer across racial groups and gene expression platforms
 
 ## Overview
-This repository and the analysis repository (LINK) contains all the code needed to recreate the analyses, tables, and figures in the paper "Molecular subtypes of high grade serous ovarian cancer across racial groups and gene expression platforms"
+This repository and the analysis repository ([link](https://github.com/greenelab/hgsc_rnaseq_cluster)) contains all the code needed to recreate the analyses, tables, and figures in the paper "Molecular subtypes of high grade serous ovarian cancer across racial groups and gene expression platforms"
 Black individuals with ovarian cancer experience poorer survival compared to non-Hispanic White individuals.
 High-grade serous carcinoma (HGSC) is the most common ovarian cancer histotype, with gene expression subtypes that are associated with differential survival.
 We characterized HGSC gene expression in Black individuals and considered whether gene expression differences by race may contribute to disparities in survival. 
@@ -13,7 +13,7 @@ We compared the calculated gene expression patterns for each cluster across data
 Following K=4 subtype assignment and mapping to The Cancer Genome Atlas (TCGA)-derived HGSC subtypes, we used multivariable-adjusted Cox proportional hazards models to estimate subtype-specific survival separately for each dataset. 
 
 This repository contains all of the code used to cluster the samples across difference datasets. 
-Code to QC the RNA-Seq samples before clustering, all downstream analyses after clustering, and all code to generate the figures and tables in the manuscript are available here: (LINK)
+Code to QC the RNA-Seq samples before clustering, all downstream analyses after clustering, and all code to generate the figures and tables in the manuscript are available here: [link](https://github.com/greenelab/hgsc_rnaseq_cluster)
 
 
 ## Data Availability
