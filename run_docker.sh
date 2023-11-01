@@ -1,7 +1,7 @@
 #!/bin/bash
 
 IMAGE_NAME="hgsc_subtypes"
-IMAGE_TAG="2023-03-01"
+IMAGE_TAG="latest"
 
 if [[ ${IMAGE_TAG} = "latest" ]]; then
 	docker build --platform linux/amd64 -t hgsc_subtypes:latest .
