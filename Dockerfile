@@ -45,20 +45,6 @@ RUN wget -nv http://download.joachims.org/svm_perf/current/svm_perf.tar.gz \
 	--directory-prefix svmperf/
 RUN cd svmperf && tar -xf svm_perf.tar.gz && make
 
-#RUN hg clone https://bitbucket.org/libsleipnir/sleipnir
-#RUN git clone https://github.com/FunctionLab/sleipnir.git
-
-#RUN cd sleipnir && git submodule init && git submodule update
-#RUN cd sleipnir && ./gen_auto && ./gen_tools_am
-#RUN cd sleipnir && ./configure --with-svm-perf=~/svmperf/ && make && make install
-
-
-# Install curatedOvarianData_1.8.0 from cached download
-# RUN wget -nv https://bitbucket.org/gwaygenomics/download/raw/\
-# 	575d017054fb27a6a0cd62102f86c0ca13bc32a2/ovca/curatedOvarianData_1.8.0.tar.gz
-# RUN tar -xf curatedOvarianData_1.8.0.tar.gz
-
-
 WORKDIR /app
 
 COPY . /app
