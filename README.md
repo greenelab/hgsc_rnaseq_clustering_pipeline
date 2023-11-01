@@ -12,8 +12,8 @@ The cluster- and dataset-specific gene expression patterns were summarized by mo
 We compared the calculated gene expression patterns for each cluster across datasets by calculating the Pearson correlation between the two summarized vectors of moderated t-scores.
 Following K=4 subtype assignment and mapping to The Cancer Genome Atlas (TCGA)-derived HGSC subtypes, we used multivariable-adjusted Cox proportional hazards models to estimate subtype-specific survival separately for each dataset. 
 
-This repository contains all of the code used to quantify and QC the RNA-Seq samples before clustering, all downstream analyses after clustering, and all code to generate the figures and tables in the manuscript.
-All clustering analyses can be re-run using Docker container found here: LINK TO DOCKER.
+This repository contains all of the code used to cluster the samples across difference datasets. 
+Code to QC the RNA-Seq samples before clustering, all downstream analyses after clustering, and all code to generate the figures and tables in the manuscript are available here: (LINK)
 
 
 ## Data Availability
