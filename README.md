@@ -22,7 +22,7 @@ The data used in this analysis, raw and processed, will be made available upon p
 ## Code overview
 - `1.DataInclusion`: This folder contains the code to download external data, exclude samples that are too similar using dopplegangeR, normalize the Mayo dataset, and select genes to be used as features during clustering.
 - `2.Clustering_DiffExprs`: This folder contains the code to run the sample clustering for each data set, as well as the SAM analysis.
-- `3.Fit`: This contains code for testing the fit of the clusters. We keep this folder for comparison, but the QC metrics generated in this folder are not used in the manuscript. For the clustering metrics used in the paper, refer to the other git repo, specifically `figure_notebooks/rerun_clustering.Rmd` and `figure_notebooks/K3_kmeans_vs_nmf.Rmd`.
+- `3.Fit`: This contains code for testing the fit of the clusters. We keep this folder for comparison to the original Way et al. 2016 pipeline ([link](https://github.com/greenelab/hgsc_subtypes)), but the QC metrics generated in this folder are not used in the manuscript. For the clustering metrics used in the paper, refer to the other git repo, specifically `figure_notebooks/rerun_clustering.Rmd` and `figure_notebooks/K3_kmeans_vs_nmf.Rmd`.
 
 ## Installation
 
